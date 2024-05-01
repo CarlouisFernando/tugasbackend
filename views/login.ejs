@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="css/log.css">
+    <script>
+        // Function to display error message
+        function displayError(message) {
+            var errorElement = document.getElementById('error');
+            errorElement.textContent = message;
+            errorElement.style.color = 'red';
+        }
+    </script>
+</head>
+<body>
+    <div class="container">
+        <h2 class="login-heading">Login</h2> <!-- Added class "login-heading" -->
+        <!-- Error message container -->
+        <p id="error"></p>
+        <form action="/login" method="POST" onsubmit="return validateForm()">
+            <div>
+                <label for="username">Username:</label>
+                <input type="text" id="username" name="username" required>
+            </div>
+            <div>
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" required>
+            </div>
+            <button type="submit">Login</button>
+            <button type="button" class="signup-btn" onclick="window.location.href='signup'">Sign Up</button>
+        </form>
+    </div>
+    <script>
+        // Function to validate form before submission
+        function validateForm() {
+            var username = document.getElementById('username').value;
+            var password = document.getElementById('password').value;
+            
+            // Perform basic validation (you can add more complex validation as needed)
+            if (!username || !password) {
+                displayError('Username and password are required');
+                return false; // Prevent form submission
+            }
+            return true; // Allow form submission
+        }
+    </script>
+</body>
+</html>
