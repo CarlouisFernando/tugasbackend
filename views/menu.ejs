@@ -1,137 +1,145 @@
 <!DOCTYPE html>
 <html lang="en">
-    
+
 <head>
-    
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Website Restoran</title>
-    <link rel="stylesheet" href="css\styles.css">
-    <script src="script.js"></script>
+    <link rel="stylesheet" href="/css\styles.css">
+    <!-- <script src="script.js"></script> -->
     <link rel="icon" type="image/x-icon" href="src\Logo.png">
 </head>
+
 <body>
-</head>
-<body>
-    <%- include('layouts/nav.ejs') %>
-    <!-- menu -->
-    <div class="container">
-        <h2></h2>
-        <div class="search-container">
-            <input type="text" id="search-bar" placeholder="Search products...">
-            <button id="search-button">Search</button>
-        </div>
-        <div class="sort-options">
-            <button id="sort-alpha">Sort by Alphabet</button>
-            <button id="sort-original">Default</button>
-            <button id="sort-price">Sort by Price</button>
-            <button id="sort-rec">Sort by Recommended</button>
-        </div>
-        <div>
-            <!-- Filter buttons -->
-            <button class="filter-btn" onclick="filterSelection('all')">Show All</button>
-            <button class="filter-btn" onclick="filterSelection('recommended')">Recommended</button>
-            <button class="filter-btn" onclick="filterSelection('above20000')">Harga Diatas Rp. 20.000</button>
-            <button class="filter-btn" onclick="filterSelection('below20000')">Harga Dibawah Rp. 20.000</button>
-        </div>
-        <div class="shop-card">
-            <!--untuk memasukkan produk produl yang di menu-->
-            <div class="product">
-                <img src="src/Shop/Espresso.png" alt="Espresso">
-                <h3>Espresso</h3>
-                <p class="desc">strong black coffee made by forcing steam through ground coffee beans.</p>
-                <p class="price">Rp.10.000</p>
-                <button class="add-to-cart">Add to Cart</button>
-                <!-- menambahkan button wishlist -->
-                <input type="button" value="Add to Wishlist" id="0", class="but">
-            </div>
-            <div class="product">
-                <img src="src/Shop/Frappucino.png" alt="Frappuccino">
-                <h3>Frappucino</h3>
-                <p class="desc"> a blended coffee drink that is typically made with coffee or espresso, milk, and ice</p>
-                <p class="price">Rp.32.000</p>
-                <button class="add-to-cart">Add to Cart</button>
-                <input type="button" value="Add to Wishlist" id="1", class="but">
-            </div>
-            <div class="product">
-                <div class="banner">Most Recommended</div>
-                <img src="src/Shop/Americanos.png" alt="Americanos">
-                <h3>Americano</h3>
-                <p class="desc">a drink of espresso diluted with hot water</p>
-                <p class="price">Rp.10.000</p>
-                <button class="add-to-cart">Add to Cart</button>
-                <input type="button" value="Add to Wishlist" id="2", class="but">
+    </head>
 
-            </div>
-            <div class="product">
-                <div class="banner">Recommended</div>
-                <img src="src/Shop/Irish.png" alt="Irish">
-                <h3>Irish</h3>
-                <p class="desc">coffee mixed with a dash of Irish whiskey and served with cream on top.</p>
-                <p class="price">Rp.35.000</p>
-                <button class="add-to-cart">Add to Cart</button>
-                <input type="button" value="Add to Wishlist" id="3", class="but">
+    <body>
+        <%- include('layouts/nav.ejs') %>
+            <!-- menu -->
+            <div class="container">
+                <h2></h2>
+                <div class="search-container">
+                    <input type="text" id="search-bar" placeholder="Search products...">
+                    <button id="search-button">Search</button>
+                </div>
+                <!-- Sort Options -->>
+                <div class="sort-options">
+                    <button id="sort-original">Default</button>
+                    <button id="sort-alpha">Sort by Alphabet</button>
+                    <button id="sort-price">Sort by Price</button>
+                </div>
+                <!-- Filter buttons -->
+                <div class="filter-btn">
+                    <button class="filter-btn" onclick="filterSelection('all')">Show All</button>
+                    <button class="filter-btn" onclick="filterSelection('above20000')">Price > 20K </button>
+                            <button class="filter-btn" onclick="filterSelection('below20000')">Price < 20K </button>
+                </div>
+                <div class="shop-card">
+                    <!--untuk memasukkan produk produk yang di menu-->
 
+                    <% menus.forEach((menu , index)=> { %>
+                        <div class="product">
+                            <img src="/menu/<%= menu.image %>" alt="<%= menu.name %>">
+                            <h3>
+                                <%= menu.name %>
+                            </h3>
+                            <p class="desc">
+                                <%= menu.description %>
+                            </p>
+                            <p class="price">
+                                Rp.<%= menu.price %>
+                            </p>
+                            <button style="margin-top: 10px;" type="button" class="add-to-checkout btn"
+                                data-index="<%= menu._id %>">Add to cart</button>
+                            <button style="margin-top: 10px;" type="button" class="add-to-wishlist btn btn-primary"
+                                data-index="<%= menu._id %>">Add to
+                                Wishlist</button>
+                        </div>
+                        <% }) %>
+                </div>
             </div>
-            <div class="product">
-                <img src="src/Shop/Latte.png" alt="Latte">
-                <h3>Latte</h3>
-                <p class="desc">a type of coffee made with espresso and hot steamed milk.</p>
-                <p class="price">Rp.20.000</p>
-                <button class="add-to-cart">Add to Cart</button>
-                <input type="button" value="Add to Wishlist" id="4", class="but">
-
-            </div>
-            <div class="product">
-                <img src="src/Shop/Affogato.png" alt="Affogato">
-                <h3>Affogato</h3>
-                <p class="desc">ice cream with espresso.</p>
-                <p class="price">Rp.40.000</p>
-                <button class="add-to-cart">Add to Cart</button>
-                <input type="button" value="Add to Wishlist" id="5", class="but">
-
-            </div>
-            <div class="product">
-                <div class="banner">Recommended</div>
-                <img src="src/Shop/moccha.png" alt="Mochaccino">
-                <h3>Mochaccino</h3>
-                <p class="desc">a cappuccino containing chocolate flavoring.</p>
-                <p class="price">Rp.35.000</p>
-                <button class="add-to-cart">Add to Cart</button>
-                <input type="button" value="Add to Wishlist" id="6", class="but">
-
-            </div>
-            <div class="product">
-                <img src="src/Shop/Macchiato.png" alt="Macchiato">
-                <h3>Macchiato</h3>
-                <p class="desc">espresso with a dash of frothy steamed milk.</p>
-                <p class="price">Rp.25.000</p>
-                <button class="add-to-cart">Add to Cart</button>
-                <input type="button" value="Add to Wishlist" id="7", class="but">
-
-            </div>
-            <div class="product">
-                <img src="src/Shop/Cortado.png" alt="Cortado">
-                <h3>Cortado</h3>
-                <p class="desc">espresso with a small amount of steamed milk.</p>
-                <p class="price">Rp.30.000</p>
-                <button class="add-to-cart">Add to Cart</button>
-                <input type="button" value="Add to Wishlist" id="8", class="but">
-
-            </div>
-            <!-- bisa melanjutkan disini-->
-        </div>
-    </div>
+    </body>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="script.js"></script>
-    
-    <div id="wishlist">
-        <h2 class="center">My Wishlist</h2>
-    </div>
-        
+
+    <script src="/script.js"></script>
+    <%- include('layouts/footer.ejs') %>
+        <script>
+            document.addEventListener('DOMContentLoaded', function () {
+                const addToWishlistButtons = document.querySelectorAll('.add-to-wishlist');
+                const addToCheckout = document.querySelectorAll('.add-to-checkout');
+
+                addToWishlistButtons.forEach(button => {
+                    button.addEventListener('click', function (event) {
+                        const index = event.target.getAttribute('data-index');
+                        // Check if local storage is available
+                        if (typeof (Storage) !== "undefined") {
+                            let wishlist = localStorage.getItem('wishlist');
+
+                            // If no wishlist exists in local storage, create a new one
+                            if (!wishlist) {
+                                wishlist = [];
+                            } else {
+                                wishlist = JSON.parse(wishlist);
+                            }
+
+                            // Check if the menu item is already in the wishlist
+                            if (!wishlist.includes(index)) {
+                                // Add the selected menu item to the wishlist
+                                wishlist.push(index);
+
+                                // Update the wishlist in local storage
+                                localStorage.setItem('wishlist', JSON.stringify(wishlist));
+
+                                alert('Menu added to wishlist!');
+                            } else {
+                                alert('This menu is already in your wishlist.');
+                            }
+                        } else {
+                            alert('Local storage is not supported in this browser.');
+                        }
+                    });
+                });
+
+
+                addToCheckout.forEach(button => {
+                    button.addEventListener('click', function (event) {
+                        const index = event.target.getAttribute('data-index');
+                        // Check if local storage is available
+                        if (typeof (Storage) !== "undefined") {
+                            let carts = localStorage.getItem('carts');
+
+                            // If no carts exists in local storage, create a new one
+                            if (!carts) {
+                                carts = [];
+                            } else {
+                                carts = JSON.parse(carts);
+                            }
+
+                            // Check if the menu item is already in the cart
+                            if (!carts.includes(index)) {
+                                // Add the selected menu item to the carts
+                                carts.push(index);
+
+                                // Update the carts in local storage
+                                localStorage.setItem('carts', JSON.stringify(carts));
+
+                                alert('Menu added to cart!');
+                            } else {
+                                alert('This menu is already in your cart.');
+                            }
+                        } else {
+                            alert('Local storage is not supported in this browser.');
+                        }
+                    });
+                });
+
+            });
+
+        </script>
+
+
+
 </body>
 
-<%- include('layouts/footer.ejs') %>
-
-</body>
 </html>

@@ -1,35 +1,32 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-    <link rel="stylesheet" href="css/Tkami.css" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Fredericka+the+Great&family=Prata&family=Press+Start+2P&family=Quicksand:wght@400;500;700&family=Satisfy&display=swap"
-      rel="stylesheet"
-    />
 
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
-      integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ=="
-      crossorigin="anonymous"
-      referrerpolicy="no-referrer"
-    />
-  </head>
-  <body>
-    <%- include('layouts/nav.ejs') %>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document</title>
+  <link rel="stylesheet" href="/css/Tkami.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Fredericka+the+Great&family=Prata&family=Press+Start+2P&family=Quicksand:wght@400;500;700&family=Satisfy&display=swap"
+    rel="stylesheet" />
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+    integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+
+<body>
+  <%- include('layouts/nav.ejs') %>
     </header>
 
     <main>
-       <!-- Bagian utama konten situs web. -->
+      <!-- Bagian utama konten situs web. -->
       <div class="content">
-         <!-- Bagian ini berisi deskripsi konten. -->
+        <!-- Bagian ini berisi deskripsi konten. -->
         <div class="content-description">
-           <!-- Judul konten-->
+          <!-- Judul konten-->
           <h1 class="title">Kopi <span>GulaJava</span></h1>
           <!--penjelasan situs-->
           <p>
@@ -43,44 +40,35 @@
             Selamat datang dan mari bersama-sama menjalani petualangan kopi yang
             tiada tara!
           </p>
-           <!-- Tombol "Lebih lanjut" dengan tautan ke halaman menu-->
+          <!-- Tombol "Lebih lanjut" dengan tautan ke halaman menu-->
           <button>
             <a href="/menu" style="text-decoration: none; color: white">
-              Lebih lanjut</a
-            >
+              Lebih lanjut</a>
           </button>
         </div>
         <!--gambar-->
         <div class="content-image">
-          <img src="src/Shop/images.jpg  " />
+          <img src="/src/Shop/images.jpg  " />
         </div>
       </div>
-     
+
       <!--untuk kontak disamping-->
       <aside>
         <div class="social-media">
           <ul>
             <li>
-              <a href="https://www.youtube.com/"
-                ><i class="fab fa-youtube"></i
-              ></a>
+              <a href="https://www.youtube.com/"><i class="fab fa-youtube"></i></a>
             </li>
             <li>
-              <a
-                href="https://www.linkedin.com/in/ridhwan-kautsar-dwi-julianto-bb0697257/"
-                ><i class="fab fa-linkedin-in"></i
-              ></a>
+              <a href="https://www.linkedin.com/in/ridhwan-kautsar-dwi-julianto-bb0697257/"><i
+                  class="fab fa-linkedin-in"></i></a>
             </li>
             <li>
-              <a
-                href="https://twitter.com/i/flow/login?redirect_after_login=%2FRinoo180704"
-                ><i class="fab fa-twitter"></i
-              ></a>
+              <a href="https://twitter.com/i/flow/login?redirect_after_login=%2FRinoo180704"><i
+                  class="fab fa-twitter"></i></a>
             </li>
             <li>
-              <a href="https://www.facebook.com/"
-                ><i class="fab fa-facebook"></i
-              ></a>
+              <a href="https://www.facebook.com/"><i class="fab fa-facebook"></i></a>
             </li>
           </ul>
         </div>
@@ -102,19 +90,19 @@
         <!--setiap kartu mewakili 1 item best seller-->
         <label class="card" for="item-1" id="song-1">
           <!--gambar-gambar produk-->
-          <img src="src/Shop/Americanos.png" alt="Americano" />
+          <img src="/src/Shop/Americanos.png" alt="Americano" />
         </label>
         <label class="card" for="item-2" id="song-2">
-          <img src="src/Shop/Frappucino.png" alt="Frappucino" />
+          <img src="/src/Shop/Frappucino.png" alt="Frappucino" />
         </label>
         <label class="card" for="item-3" id="song-3">
-          <img src="src/Shop/Latte.png" alt="Latte" />
+          <img src="/src/Shop/Latte.png" alt="Latte" />
         </label>
       </div>
       <div class="player">
         <div class="upper-part">
           <div class="info-area" id="test">
-             <!-- setiap label menyediakan informasi tentang produk tertentu. -->
+            <!-- setiap label menyediakan informasi tentang produk tertentu. -->
             <label class="song-info" id="song-info-1">
               <!-- Judul dan deskripsi produk ditampilkan. -->
               <div class="title">Americano ⭐⭐⭐⭐</div>
@@ -165,23 +153,20 @@
         Terima kasih telah berkunjung. Kritik atau saran Anda sangat berharga
         untuk perkembangan kedai kopi.
       </p>
-
-    
-      <form action="http://localhost:3000/submit-form" 
-      method="POST">
-> <!-- Bagian ini berisi input untuk alamat email pengguna. -->
-  <label>
-     <!-- Bagian ini berisi input untuk kritik dan saran yang akan dikirimkan. -->
-    Email:
-    <input type="email" name="email">
-  </label>
-  <label>
-    Kritik & Saran :
-    <textarea name="message"></textarea>
-  </label>
-   <!--mengirim formulir dengan data yang dimasukkan pengguna ke database -->
-  <button type="submit">Send</button>
-</form>
+      <form action="/user/submit-form" method="POST">
+        <!-- Bagian ini berisi input untuk alamat email pengguna. -->
+        <label>
+          <!-- Bagian ini berisi input untuk kritik dan saran yang akan dikirimkan. -->
+          Email:
+          <input type="email" name="email">
+        </label>
+        <label>
+          Kritik & Saran :
+          <textarea name="message"></textarea>
+        </label>
+        <!--mengirim formulir dengan data yang dimasukkan pengguna ke database -->
+        <button type="submit">Send</button>
+      </form>
     </div>
 
     <script src="Tkami.js"></script>

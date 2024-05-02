@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tambah Menu</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+</head>
+
+<body>
+    <div class="container mt-5">
+        <h2>Edit Toko</h2>
+        <form action="/admin/settings/edit/<%= toko.id %>" method="POST">
+            <div class="mb-3">
+                <label for="name" class="form-label">Alamat:</label>
+                <input type="text" class="form-control" id="alamat" name="alamat" value="<%= toko.alamat %>" required>
+            </div>
+            <div class="mb-3">
+                <label for="description" class="form-label">jam buka</label>
+                <input type="time" class="form-control" id="jam_buka" name="jam_buka" value="<%= toko.jam_buka %>"
+                    required>
+            </div>
+            <div class="mb-3">
+                <label for="price" class="form-label">Kontak:</label>
+                <input type="tel" class="form-control" id="kontak" name="kontak" value="<%= toko.kontak %>" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Save</button>
+        </form>
+    </div>
+    <!-- Bootstrap JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

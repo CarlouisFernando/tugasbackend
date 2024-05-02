@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Panel</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="/css\styles.css">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        .sidebar {
+            position: fixed;
+            width: 250px;
+            height: 100%;
+            background-color: #333;
+            padding-top: 20px;
+            color: #fff;
+        }
+
+        .sidebar a {
+            display: block;
+            padding: 10px;
+            color: #fff;
+            text-decoration: none;
+        }
+
+        td {
+            color: #333;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <a href="/admin"><i class="fas fa-home"></i> Dashboard</a>
+        <a href="/admin/pesanan"><i class="fas fa-users"></i> Pesanan</a>
+        <a href="/admin/menu"><i class="fas fa-users"></i> Menu</a>
+        <a href="/admin/saran"><i class="fas fa-chart-line"></i> Saran</a>
+        <a href="/admin/settings"><i class="fas fa-chart-line"></i> Settings</a>
+        <a href="/logout"><i class="fa fa-sign-out"></i> Logout</a>
+    </div>
+    <!-- Content -->
+    <div class="content">
+        <h2 style="color: #333;">Menu</h2>
+        <button onclick="tambahMenu()" class="btn btn-primary">Tambah Menu</button>
+        <% if (typeof success !=='undefined' ) { %>
+            <p style="color: blue;">
+                <%= success %>
+            </p>
+            <% } %>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Description</th>
+                            <th>Price</th>
+                            <th>Images</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% menus.forEach(menu=> { %>
+                            <tr>
+                                <td>
+                                    <%= menu.name %>
+                                </td>
+                                <td>
+                                    <%= menu.description %>
+                                </td>
+                                <td>
+                                    <%= menu.price %>
+                                </td>
+                                <td>
+                                    <img height="100" src="/menu/<%= menu.image %>" alt="foto-menu" srcset="">
+                                </td>
+                                <td>
+                                    <a href="/admin/menu/edit/<%= menu._id %>"
+                                        style="text-decoration: underline;">edit</a>
+                                    <a style="text-decoration: underline; color: red;"
+                                        href="/admin/menu/delete/<%= menu._id %>">hapus</a>
+                                </td>
+                            </tr>
+                            <% }); %>
+                    </tbody>
+                </table>
+    </div>
+</body>
+
+<script>
+    function tambahMenu() {
+        window.location.href = '/admin/menu/add'
+    }
+</script>
+
+
+</html>
