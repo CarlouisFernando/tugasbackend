@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Website Restoran</title>
+    <link rel="stylesheet" href="/css\styles.css">
+    <script src="script.js"></script>
+    <link rel="icon" type="image/x-icon" href="src\Logo.png">
+</head>
+
+<body>
+    </head>
+
+    <body>
+        <%- include('layouts/nav.ejs') %>
+            <!-- menu -->
+            <div class="container">
+                <div class="card">
+                    <h3>Cart</h3>
+                </div>
+                <hr>
+                <div id="carts" style="display: flex; flex-wrap: wrap;"></div>
+                <p id="total" style="color: #333;">Total : 0</p>
+                <form id="checkoutForm">
+                    <!-- Isi form checkout di sini -->
+                    <button type="submit">Checkout</button>
+                </form>
+
+            </div>
+            </div>
+            <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+            <script src="/script.js"></script>
+    </body>
+    <%- include('layouts/footer.ejs') %>
+        <script>
+            const listcarts = localStorage.getItem('carts')
+            const body = {
+                menuIds: JSON.parse(listcarts || [])
+            };
+            console.log(body)
+            let total = 0
+
+            async function getcarts() {
+                var response = await fetch("/api/menu", {
+                    body: JSON.stringify(body),
+                    method: 'post',
+                    headers: {
+                        "content-type": 'Application/json'
+                    }
+                })
+                var jsonrespons = await response.json();
+                jsonrespons.forEach(menu => {
+                    total += menu.price;
+                    const productDiv = document.createElement('div');
+                    productDiv.classList.add('product');
+
+                    // Create and set image element
+                    const img = document.createElement('img');
+                    img.src = `/menu/${menu.image}`;
+                    img.alt = menu.name;
+
+                    // Create and set heading element
+                    const heading = document.createElement('h3');
+                    heading.textContent = menu.name;
+
+                    // Create and set description paragraph element
+                    const desc = document.createElement('p');
+                    desc.classList.add('desc');
+                    desc.textContent = menu.description;
+
+                    // Create and set price paragraph element
+                    const price = document.createElement('p');
+                    price.classList.add('price');
+                    price.textContent = `Rp.${menu.price}`;
+
+                    // Create add to cart button
+                    const addToCartBtn = document.createElement('button');
+                    addToCartBtn.classList.add('add-to-cart');
+                    addToCartBtn.textContent = 'Add to Cart';
+
+                    // Create remove from carts button
+                    const removeFromcartsBtn = document.createElement('button');
+                    removeFromcartsBtn.classList.add('remove-from-carts', 'btn', 'btn-danger');
+                    removeFromcartsBtn.style.marginTop = '10px';
+                    removeFromcartsBtn.setAttribute('type', 'button');
+                    removeFromcartsBtn.setAttribute('data-index', menu._id);
+                    removeFromcartsBtn.textContent = 'Remove from carts';
+
+                    // Append elements to product container
+                    productDiv.appendChild(img);
+                    productDiv.appendChild(heading);
+                    productDiv.appendChild(desc);
+                    productDiv.appendChild(price);
+                    productDiv.appendChild(addToCartBtn);
+                    productDiv.appendChild(removeFromcartsBtn);
+
+                    // Append product container to the parent element
+                    document.querySelector('#carts').appendChild(productDiv);
+
+                    // Add event listener to remove from carts button
+                    removeFromcartsBtn.addEventListener('click', function (event) {
+                        const index = event.target.getAttribute('data-index');
+                        // Check if local storage is available
+                        if (typeof (Storage) !== "undefined") {
+                            let carts = localStorage.getItem('carts');
+
+                            // If carts exists in local storage
+                            if (carts) {
+                                carts = JSON.parse(carts);
+
+                                // Find index of the menu item to remove
+                                const itemIndex = carts.indexOf(index);
+                                if (itemIndex !== -1) {
+                                    // Remove menu item from carts array
+                                    carts.splice(itemIndex, 1);
+
+                                    // Update the carts in local storage
+                                    localStorage.setItem('carts', JSON.stringify(carts));
+
+                                    // Remove the product container from the UI
+                                    productDiv.remove();
+
+                                    alert('Menu removed from carts!');
+                                } else {
+                                    alert('Menu not found in carts!');
+                                }
+                            } else {
+                                alert('No carts exists in local storage!');
+                            }
+                        } else {
+                            alert('Local storage is not supported in this browser.');
+                        }
+                    });
+                });
+                document.getElementById('total').innerHTML = "Total : " + total;
+            }
+            getcarts();
+            
+            async function checkout() {
+                try {
+                    // Mengambil daftar menuIds dari localStorage
+                    const listcarts = localStorage.getItem('carts');
+
+                    // Membuat body permintaan dengan menuIds
+                    const body = {
+                        items: listcarts || [], // Menggunakan langsung listcarts, karena sudah berupa array
+                        totalPrice: total
+                    };
+
+                    console.log(body);
+
+                    // Mengirim permintaan HTTP POST ke endpoint checkout
+                    const response = await fetch('/api/user/checkout', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify(body)
+                    });
+
+                    // Memeriksa respon dari server
+                    if (response.ok) {
+                        // Jika checkout berhasil, lakukan sesuatu
+                        console.log('Checkout berhasil!');
+
+                        // Misalnya, kosongkan keranjang belanja setelah checkout
+                        localStorage.removeItem('carts');
+                        window.location.href = "/user/pesanan";
+                    } else {
+                        // Jika terjadi kesalahan saat checkout
+                        console.error('Gagal melakukan checkout:', response.statusText);
+                    }
+                } catch (error) {
+                    // Jika terjadi kesalahan pada proses checkout
+                    console.error('Kesalahan pada proses checkout:', error);
+                }
+
+            }
+
+
+            document.getElementById('checkoutForm').addEventListener('submit', async function (event) {
+                event.preventDefault(); // Mencegah pengiriman form secara default
+
+                // Panggil fungsi checkout saat form disubmit
+                await checkout();
+            });
+
+        </script>
+</body>
+
+</html>

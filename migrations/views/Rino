@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Kopi GulaJava</title>
+  
+  <link rel="stylesheet" href="./css/kelompok.css">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fredericka+the+Great&family=Prata&family=Press+Start+2P&family=Quicksand:wght@400;500;700&family=Satisfy&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ==" crossorigin="anonymous" referrerpolicy="no-referrer"/>
+ 
+ <style>
+  @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;700&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Fredericka+the+Great&family=Prata&family=Press+Start+2P&family=Quicksand:wght@400;500;700&family=Satisfy&display=swap');
+ 
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+ 
+body {
+  height: 100vh;
+  font-family: 'Quicksand', sans-serif;
+  margin: 0;
+ 
+  display: flex;
+  flex-direction: column;
+}
+ 
+header.navbar-container {
+  max-width: 1200px;
+  width: 100%;
+  margin-inline: auto;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+ 
+  padding-block: 1rem;
+  z-index: 999;
+}
+ 
+header.navbar-container .logo img {
+  width: 150px;
+}
+ 
+header.navbar-container .nav-list ul {
+  padding-left: 0;
+  display: flex;
+  justify-content: center;
+  gap: 2rem 1rem;
+}
+ 
+header.navbar-container .nav-list li {
+  list-style-type: none;
+}
+ 
+header.navbar-container .nav-list li a {
+  text-decoration: none;
+  font-size: 1.05rem;
+  font-weight: 500;
+  color: black;
+  padding: .5rem 1.5rem;
+  border-radius: 999px;
+  transition: all .2s ease-in-out;
+}
+ 
+header.navbar-container .nav-list li:hover a {
+  background-color: burlywood;
+  color: white;
+}
+ 
+main {
+  max-width: 1200px;
+  width: 100%;
+  margin-inline: auto;
+  padding: 2rem 4rem;
+  flex: 1;
+ 
+  display: flex;
+  align-items: center;
+  
+}
+ 
+main .content {
+  flex: 1;
+  display: flex;
+  align-items: center;
+
+}
+ 
+main .content .content-description {
+  flex: 1 1;
+}
+ 
+main .content .content-description .title{
+font-family: 'Satisfy', cursive;
+  font-size: 3.5rem;
+  margin-block: 1rem;
+}
+
+span{
+color: bisque;
+}
+ 
+main .content .content-description p {
+  line-height: 1.7rem;
+  font-size: 1.2rem;
+}
+ 
+main .content .content-description button {
+  padding: .8rem 2.5rem;
+  margin-block-start: 1rem;
+  text-transform: uppercase;
+  font-weight: 700;
+  font-size: 1rem;
+  font-family: 'Quicksand', sans-serif;
+  color: white;
+ 
+  border: 3px solid transparent;
+  border-radius: 999px;
+  background-color:burlywood;
+  cursor: pointer;
+  transition: all .15s ease-in;
+}
+ 
+main .content .content-description button:hover {
+  border: 3px solid burlywood;
+  color: burlywood;
+  background-color: transparent;
+}
+ 
+main .content .content-image {
+  flex: 1;
+  display: flex;
+  
+}
+ 
+main .content .content-image img {
+  margin: auto;
+  width: 460px;
+  border-radius: 30px;
+}
+ 
+main aside {
+  position: fixed;
+  inset-block: 0;
+  inset-inline-end: 0;
+}
+ 
+main aside .social-media {
+  height: 100%;
+  display: flex;
+}
+ 
+main aside .social-media ul {
+  padding: 1.5rem 1rem;
+  margin: auto;
+  border-top-left-radius: 12px;
+  border-bottom-left-radius: 12px;
+  background-color: burlywood;
+ 
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+  justify-content: center;
+  gap: 1.5rem;
+}
+ 
+main aside .social-media li {
+  list-style-type: none;
+}
+ 
+main aside .social-media li a {
+  text-decoration: none;
+  font-size: 1.5rem;
+  color: white;
+  transition: all .1s ease-in-out;
+}
+ 
+main aside .social-media li a:hover {
+  color: blanchedalmond;
+}
+
+.bg-kopi{
+    position: relative;
+    background-size: cover;
+    background-repeat: no-repeat;
+    width: 8rem;
+    height: 15rem;
+    background-image: url(../assets/coffee-beans-top-view-white-background-space-text.jpg);
+    width: 88.9rem;
+    height: 20rem;
+    background-size: cover;
+    background-repeat: no-repeat;
+    
+}
+
+#carouselExampleAutoplaying{
+    margin-left: 390px;
+    margin-top: 100px;
+    height: 620px;
+    width: 700px;
+}
+
+
+.image{
+    border-radius: 100%;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+:root {
+    font-size: 16px;
+}
+
+
+
+.container {
+    width: 100%;
+    display: flex;
+    padding:  20px;
+}
+
+.slide {
+    height: 60vh;
+    border-radius: 20px;
+    margin: 2   0px;
+    cursor: pointer;
+    color: #fff;
+    flex: 1;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    position: relative;
+    transition: all 0.7s ease-in-out;
+    filter: blur(4px);
+}
+
+.slide h3 {
+    position: absolute;
+    font-size: clamp(1rem, 5vw, 5rem);
+    bottom: 20px;
+    left: 20px;
+    margin: 0;
+    opacity: 0;
+    background-color: #e3fdf5;
+    background-image: linear-gradient(-225deg, #e3fdf5 0%, #ffe6fa 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.slide.active {
+    flex: 10;
+    filter: blur(0px);
+}
+
+.slide.active h3 {
+    opacity: 1;
+    transition: opacity 0.3s ease-in 0.4s;
+}
+
+/* responsive */
+
+@media screen and (max-width: 50rem) {
+
+    .container {
+        display: flex;
+        height: 90vh;
+        flex-direction: column;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: center;
+        align-content: center;
+    }
+
+    .slide {
+        width: 90vw;
+        border-radius: 20px;
+        margin: 10px;
+    }
+
+}
+ </style>
+</head>
+<body>
+<header class="navbar-container">
+  <div class="logo">
+    <img src="./assets/image-removebg-preview (2).png">
+  </div>
+  <nav class="nav-list">
+    <ul>
+      <li><a href="#">Beranda</a></li>
+      <li><a href="#">Menu</a></li>
+      <li><a href="#">Apa yang Baru</a></li>
+      <li><a href="#">Kontak</a></li>
+    </ul>
+  </nav>
+</header>
+
+<main>
+  <div class="content">
+    <div class="content-description">
+      <h1 class="title">Kopi <span>GulaJava</span></h1>
+      <p>Selamat datang di Gula Java, tempatnya untuk menikmati kelezatan sejati dalam secangkir kopi. Nikmati aroma kopi segar yang memikat dan rasanya yang luar biasa dalam setiap tegukan. Kami menyajikan beragam jenis kopi terbaik dari seluruh penjuru dunia, diseduh dengan penuh cinta oleh barista kami yang berpengalaman. Rasakan kehangatan dan kenyamanan di Gula Java, tempat yang sempurna untuk bersantai atau bekerja sambil menikmati secangkir kopi terbaik. Selamat datang dan mari bersama-sama menjalani petualangan kopi yang tiada tara!</p>
+    
+      <button>Lebih lanjut</button>
+    </div>
+  
+    <div class="content-image">
+         <img src="./assets/Kopi.jpg" >
+    </div>
+  </div>
+ 
+  <aside>
+    <div class="social-media">
+      <ul>
+        <li><a href="#"><i class="fab fa-youtube"></i></a></li>
+        <li><a href="#"><i class="fab fa-linkedin-in"></i></a></li>
+        <li><a href="#"><i class="fab fa-twitter"></i></a></li>
+        <li><a href="#"><i class="fab fa-facebook"></i></a></li>
+      </ul>
+    </div>
+  </aside>
+</main>
+
+
+
+    <div class="container">
+
+        <div class="slide" style="background-image: url('./assets/1686725257278.jpg');">
+            <h3>Hutan</h3>
+        </div>
+
+        <div class="slide" style="background-image: url('./assets/coffee-beans-top-view-white-background-space-text.jpg');">
+            <h3>Pulau</h3>
+        </div>
+
+        <div class="slide" style="background-image: url('./assets/image-removebg-preview\ \(2\).png');">
+            <h3>Pantai</h3>
+        </div>
+
+        <div class="slide" style="background-image: url('./assets/Logo-UNTAR-Universitas-Tarumanagara-Warna.png');">
+            <h3>Gunung</h3>
+        </div>
+
+        <div class="slide" style="background-image: url('./assets/Kopi.jpg');">
+            <h3>Persawahan</h3>
+        </div>
+
+    </div>
+
+    <script>
+        activeslideimg();
+
+        function activeslideimg(activeSlide = 2) {
+            const slides = document.querySelectorAll(".slide");
+
+            slides[activeSlide].classList.add("active");
+
+            for (const slide of slides) {
+                slide.addEventListener("click", () => {
+                    clearActiveClasses();
+
+                    slide.classList.add("active");
+                });
+            }
+
+
+            function clearActiveClasses() {
+                slides.forEach((slide) => {
+                    slide.classList.remove("active");
+                })
+            }
+
+
+        }
+    </script>
+
+
+
+
+
+
+
+</body>
+</html>

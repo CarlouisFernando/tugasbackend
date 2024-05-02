@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document</title>
+  <link rel="stylesheet" href="/css/Tkami.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Fredericka+the+Great&family=Prata&family=Press+Start+2P&family=Quicksand:wght@400;500;700&family=Satisfy&display=swap"
+    rel="stylesheet" />
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+    integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+
+<body>
+  <%- include('layouts/nav.ejs') %>
+    </header>
+
+    <main>
+      <!-- Bagian utama konten situs web. -->
+      <div class="content">
+        <!-- Bagian ini berisi deskripsi konten. -->
+        <div class="content-description">
+          <!-- Judul konten-->
+          <h1 class="title">Kopi <span>GulaJava</span></h1>
+          <!--penjelasan situs-->
+          <p>
+            Selamat datang di Gula Java, tempatnya untuk menikmati kelezatan
+            sejati dalam secangkir kopi. Nikmati aroma kopi segar yang memikat
+            dan rasanya yang luar biasa dalam setiap tegukan. Kami menyajikan
+            beragam jenis kopi terbaik dari seluruh penjuru dunia, diseduh
+            dengan penuh cinta oleh barista kami yang berpengalaman. Rasakan
+            kehangatan dan kenyamanan di Gula Java, tempat yang sempurna untuk
+            bersantai atau bekerja sambil menikmati secangkir kopi terbaik.
+            Selamat datang dan mari bersama-sama menjalani petualangan kopi yang
+            tiada tara!
+          </p>
+          <!-- Tombol "Lebih lanjut" dengan tautan ke halaman menu-->
+          <button>
+            <a href="/menu" style="text-decoration: none; color: white">
+              Lebih lanjut</a>
+          </button>
+        </div>
+        <!--gambar-->
+        <div class="content-image">
+          <img src="/src/Shop/images.jpg  " />
+        </div>
+      </div>
+
+      <!--untuk kontak disamping-->
+      <aside>
+        <div class="social-media">
+          <ul>
+            <li>
+              <a href="https://www.youtube.com/"><i class="fab fa-youtube"></i></a>
+            </li>
+            <li>
+              <a href="https://www.linkedin.com/in/ridhwan-kautsar-dwi-julianto-bb0697257/"><i
+                  class="fab fa-linkedin-in"></i></a>
+            </li>
+            <li>
+              <a href="https://twitter.com/i/flow/login?redirect_after_login=%2FRinoo180704"><i
+                  class="fab fa-twitter"></i></a>
+            </li>
+            <li>
+              <a href="https://www.facebook.com/"><i class="fab fa-facebook"></i></a>
+            </li>
+          </ul>
+        </div>
+      </aside>
+    </main>
+    <br />
+    <br />
+    <br />
+    <div>
+      <h1 class="title">Best Seller</h1>
+    </div>
+    <div class="container1">
+      <!--untuk bisa di navigasi-->
+      <input type="radio" name="slider" id="item-1" checked />
+      <input type="radio" name="slider" id="item-2" />
+      <input type="radio" name="slider" id="item-3" />
+      <!--untuk daftar kartu produk-->
+      <div class="cards">
+        <!--setiap kartu mewakili 1 item best seller-->
+        <label class="card" for="item-1" id="song-1">
+          <!--gambar-gambar produk-->
+          <img src="/src/Shop/Americanos.png" alt="Americano" />
+        </label>
+        <label class="card" for="item-2" id="song-2">
+          <img src="/src/Shop/Frappucino.png" alt="Frappucino" />
+        </label>
+        <label class="card" for="item-3" id="song-3">
+          <img src="/src/Shop/Latte.png" alt="Latte" />
+        </label>
+      </div>
+      <div class="player">
+        <div class="upper-part">
+          <div class="info-area" id="test">
+            <!-- setiap label menyediakan informasi tentang produk tertentu. -->
+            <label class="song-info" id="song-info-1">
+              <!-- Judul dan deskripsi produk ditampilkan. -->
+              <div class="title">Americano ⭐⭐⭐⭐</div>
+              <div class="sub-line">
+                <div class="subtitle">
+                  Americano adalah minuman kopi yang menonjol dengan keanggunan
+                  sederhana. Ini adalah pilihan yang populer bagi mereka yang
+                  mencari rasa kopi yang kuat dan murni. Terbentuk dari espresso
+                  yang ditambahkan air panas
+                </div>
+              </div>
+            </label>
+            <label class="song-info" id="song-info-2">
+              <div class="title">Frappucino ⭐⭐⭐⭐</div>
+              <div class="sub-line">
+                <div class="subtitle">
+                  Frappuccino adalah minuman dingin dan menyegarkan yang sangat
+                  populer di seluruh dunia. Produk ini telah menjadi best seller
+                  di toko kami berkat cita rasanya yang unik dan kesegaran yang
+                  ditawarkan kepada pelanggan. Terbuat dari Lakuran dari frappé
+                  dan cappuccino
+                </div>
+              </div>
+            </label>
+            <label class="song-info" id="song-info-3">
+              <div class="title">Latte ⭐⭐⭐⭐⭐</div>
+              <div class="sub-line">
+                <div class="subtitle">
+                  Latte adalah minuman kopi yang menggabungkan kelembutan susu
+                  dengan kekuatan dan kompleksitas rasa kopi. Ini adalah minuman
+                  yang cocok untuk mereka yang menginginkan pengalaman kopi yang
+                  lezat dan seimbang. Terbuat dari espresso dikombinasikan
+                  dengan susu kukus
+                </div>
+              </div>
+              <hr />
+              `
+            </label>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!--halaman web yang menyediakan formulir untuk memberikan kritik dan saran. -->
+    <h2 id="Kritik">Kritik dan Saran</h2>
+    <div>
+      <p>
+        Terima kasih telah berkunjung. Kritik atau saran Anda sangat berharga
+        untuk perkembangan kedai kopi.
+      </p>
+      <form action="/user/submit-form" method="POST">
+        <!-- Bagian ini berisi input untuk alamat email pengguna. -->
+        <label>
+          <!-- Bagian ini berisi input untuk kritik dan saran yang akan dikirimkan. -->
+          Email:
+          <input type="email" name="email">
+        </label>
+        <label>
+          Kritik & Saran :
+          <textarea name="message"></textarea>
+        </label>
+        <!--mengirim formulir dengan data yang dimasukkan pengguna ke database -->
+        <button type="submit">Send</button>
+      </form>
+    </div>
+
+    <script src="Tkami.js"></script>
+
+    <!--footer->
+    <%- include('layouts/footer.ejs') %>
+</html>

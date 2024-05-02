@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Website Restoran</title>
+    <link rel="stylesheet" href="/css\styles.css">
+    <script src="script.js"></script>
+    <link rel="icon" type="image/x-icon" href="src\Logo.png">
+</head>
+
+<body>
+    </head>
+
+    <body>
+        <%- include('layouts/nav.ejs') %>
+            <!-- menu -->
+            <div class="container">
+                <div class="card">
+                    <h3>Wishlist</h3>
+                </div>
+                <hr>
+                <div id="wishlist" style="display: flex; flex-wrap: wrap;"></div>
+            </div>
+            </div>
+            <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+            <script src="/script.js" type="text/javascript"></script>
+    </body>
+
+    <%- include('layouts/footer.ejs') %>
+
+
+        <script>
+            const listWishlist = localStorage.getItem('wishlist')
+            const body = {
+                menuIds: JSON.parse(listWishlist || [])
+            };
+            async function getWishlist() {
+                var response = await fetch("/api/menu", {
+                    body: JSON.stringify(body),
+                    method: 'post',
+                    headers: {
+                        "content-type": 'Application/json'
+                    }
+                })
+                var jsonrespons = await response.json();
+                jsonrespons.forEach(menu => {
+                    const productDiv = document.createElement('div');
+                    productDiv.classList.add('product');
+
+                    // Create and set image element
+                    const img = document.createElement('img');
+                    img.src = `/menu/${menu.image}`;
+                    img.alt = menu.name;
+
+                    // Create and set heading element
+                    const heading = document.createElement('h3');
+                    heading.textContent = menu.name;
+
+                    // Create and set description paragraph element
+                    const desc = document.createElement('p');
+                    desc.classList.add('desc');
+                    desc.textContent = menu.description;
+
+                    // Create and set price paragraph element
+                    const price = document.createElement('p');
+                    price.classList.add('price');
+                    price.textContent = `Rp.${menu.price}`;
+
+                    // Create add to cart button
+                    const addToCartBtn = document.createElement('button');
+                    addToCartBtn.classList.add('add-to-cart');
+                    addToCartBtn.textContent = 'Add to Cart';
+
+                    // Create remove from wishlist button
+                    const removeFromWishlistBtn = document.createElement('button');
+                    removeFromWishlistBtn.classList.add('remove-from-wishlist', 'btn', 'btn-danger');
+                    removeFromWishlistBtn.style.marginTop = '10px';
+                    removeFromWishlistBtn.setAttribute('type', 'button');
+                    removeFromWishlistBtn.setAttribute('data-index', menu._id);
+                    removeFromWishlistBtn.textContent = 'Remove from Wishlist';
+
+                    // Append elements to product container
+                    productDiv.appendChild(img);
+                    productDiv.appendChild(heading);
+                    productDiv.appendChild(desc);
+                    productDiv.appendChild(price);
+                    productDiv.appendChild(addToCartBtn);
+                    productDiv.appendChild(removeFromWishlistBtn);
+
+                    // Append product container to the parent element
+                    document.querySelector('#wishlist').appendChild(productDiv);
+
+                    // Add event listener to remove from wishlist button
+                    removeFromWishlistBtn.addEventListener('click', function (event) {
+                        const index = event.target.getAttribute('data-index');
+                        // Check if local storage is available
+                        if (typeof (Storage) !== "undefined") {
+                            let wishlist = localStorage.getItem('wishlist');
+
+                            // If wishlist exists in local storage
+                            if (wishlist) {
+                                wishlist = JSON.parse(wishlist);
+
+                                // Find index of the menu item to remove
+                                const itemIndex = wishlist.indexOf(index);
+                                if (itemIndex !== -1) {
+                                    // Remove menu item from wishlist array
+                                    wishlist.splice(itemIndex, 1);
+
+                                    // Update the wishlist in local storage
+                                    localStorage.setItem('wishlist', JSON.stringify(wishlist));
+
+                                    // Remove the product container from the UI
+                                    productDiv.remove();
+
+                                    alert('Menu removed from wishlist!');
+                                } else {
+                                    alert('Menu not found in wishlist!');
+                                }
+                            } else {
+                                alert('No wishlist exists in local storage!');
+                            }
+                        } else {
+                            alert('Local storage is not supported in this browser.');
+                        }
+                    });
+                });
+            }
+            getWishlist();
+        </script>
+
+</body>
+
+</html>
