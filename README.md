@@ -7,3 +7,7 @@ Tugas UTS website
 
 Tugas UTS backend
 Website kopi bernama Gula Java
+
+LINK YOUTUBE :
+Demo Program : https://youtu.be/rHYhXHYQOy0
+Powerpoint : https://youtu.be/6WEIjAQGYRs
